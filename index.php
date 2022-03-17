@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,12 +43,12 @@
       </button>
       <div class="container">
         <!-- Brand -->
-        <a class="navbar-brand" href="index.html"> KILT </a>
+        <a class="navbar-brand" href="index.php"> KILT </a>
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbartoggler">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link"  href="index.html"
+              <a class="nav-link"  href="index.php"
                 >Stories</a
               >
             </li>
@@ -53,7 +56,7 @@
               <a class="nav-link"  href="login.php">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="#"
+              <a class="nav-link"  href="profile.php"
                 >Profile</a
               >
             </li>
@@ -305,260 +308,7 @@
 </div>
      
       
-<!-- End Stories================================================== -->
-
-
-      <!-- Old Stories format. Delete later -->
-           <section class="featured-posts">
-     <div class="card-columns listfeaturedtag">
-          <!-- begin post -->
-          <div class="card">
-            <div class="row">
-              <div class="col-md-5 wrapthumbnail">
-                <a href="#">
-                  <div
-                    class="thumbnail"
-                    style="background-image: url(assets/img/demopic/1.jpg)"
-                  ></div> <!--Add link to read the story in full on another page-->
-                </a>
-              </div>
-              <div class="col-md-7">
-                <div class="card-block">
-                  <h2 class="card-title">
-                    <a href="#"> Hello Aberdeen</a>
-                  </h2>
-                  <h4 class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                  <div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mcknight</span
-                        ><br />
-                        <span class="post-date">3rd March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                    </div>
-                  </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <!-- end post -->
-
-          <!-- begin post -->
-           <div class="card">
-            <div class="row">
-              <div class="col-md-5 wrapthumbnail">
-                <a href="#">
-                  <div
-                    class="thumbnail"
-                    style="background-image: url(assets/img/demopic/2.jpg)"
-                  ></div> <!--Add link to read the story in full on another page-->
-                </a>
-              </div>
-              <div class="col-md-7">
-                <div class="card-block">
-                  <h2 class="card-title">
-                    <a href="#"> With Love from Glasgow</a>
-                  </h2>
-                  <h4 class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                  <div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Sarah O'Riley</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--end post -->
-
-          <!-- begin post -->
-          <div class="card">
-            <div class="row">
-              <div class="col-md-5 wrapthumbnail">
-                <a href="#">
-                  <div
-                    class="thumbnail"
-                    style="background-image: url(assets/img/demopic/3.jpg)"
-                  ></div> <!--Add link to read the story in full on another page-->
-                </a>
-              </div>
-              <div class="col-md-7">
-                <div class="card-block">
-                  <h2 class="card-title">
-                    <a href="#"> I took a trip to Edinburgh</a>
-                  </h2>
-                  <h4 class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                  <div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Kevin Darnell</span
-                        ><br />
-                        <span class="post-date">6th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end post -->
-
-          <!-- begin post -->
-          <div class="card">
-            <div class="row">
-              <div class="col-md-5 wrapthumbnail">
-                <a href="#">
-                  <div
-                    class="thumbnail"
-                    style="background-image: url(assets/img/demopic/4.jpg)"
-                  ></div> <!--Add link to read the story in full on another page-->
-                </a>
-              </div>
-              <div class="col-md-7">
-                <div class="card-block">
-                  <h2 class="card-title">
-                    <a href="#"> What to do in Dundee!</a>
-                  </h2>
-                  <h4 class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                  <div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          > Felicity Jones</span
-                        ><br />
-                        <span class="post-date">8th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end post -->
-          <!--Begin post-->
-           <div class="card">
-            <div class="row">
-              <div class="col-md-5 wrapthumbnail">
-                <a href="#">
-                  <div
-                    class="thumbnail"
-                    style="background-image: url(assets/img/demopic/5.jpg)"
-                  ></div> <!--Add link to read the story in full on another page-->
-                </a>
-              </div>
-              <div class="col-md-7">
-                <div class="card-block">
-                  <h2 class="card-title">
-                    <a href="#"> Restaurants to Try in Perth</a>
-                  </h2>
-                  <h4 class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                  <div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Ada Shelby</span
-                        ><br />
-                        <span class="post-date">9th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--End post -->
-        </div>
-      </section>
-      <!-- End Stories
-	================================================== -->
-
-      
+<!-- End Stories================================================== -->    
 
       <!-- Begin Footer
 	================================================== -->

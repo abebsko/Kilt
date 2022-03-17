@@ -36,9 +36,9 @@
             <input class="input-box" type="text" placeholder= "Enter Email" name ="username" required> 
             <label class= "input-label"for="password"> <b>Password:</b></label>
             <input class="input-box" type="text" placeholder="Enter Password" name= "password"required>
-<button type= "submit" class="btn btn-login  my-4"> Login </button>
+<a href="index.php" class="btn btn-login  my-4">Login </a>
                  </div>
-<span class= "sup"> Don't have an account? <a href="#">Sign Up </a></span>
+<span class= "sup"> Don't have an account? <a href="signup.php">Sign Up </a></span>
     </div>  
     </div>
      </div>

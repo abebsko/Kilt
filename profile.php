@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,12 +49,12 @@
         <div class="collapse navbar-collapse" id="navbartoggler">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link"  href="index.html"
+              <a class="nav-link"  href="index.php"
                 >Stories</a
               >
             </li>
                         <li class="nav-item">
-              <a class="nav-link"  href="#"
+              <a class="nav-link"  href="write.php"
                 >Write</a
               >
             </li>
