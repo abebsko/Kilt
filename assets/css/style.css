@@ -6,6 +6,7 @@ License: https://www.wowthemes.net/freebies-license/
 */
 body {
   padding-top: 80px;
+  font-family: Righteous, sans-serif;
 }
 
 a {
@@ -43,6 +44,9 @@ section {
 }
 .mainheading {
   padding: 16px 0px;
+}
+.lead {
+  font-weight: 200;
 }
 
 /*.mainheading h1.posttitle {
@@ -306,7 +310,6 @@ blockquote {
   border: 0;
 }
 .graybg {
-  background-color: #fafafa;
   padding: 40px 0 46px;
   position: relative;
 }
@@ -357,11 +360,6 @@ span.post-delete {
   display: inline-block;
 }
 
-.post-top-meta .btn.edit {
-  margin-left: 5px;
-  margin-top: -4px;
-}
-
 .post-top-meta.authorpage .author-thumb {
   float: none;
 }
@@ -386,4 +384,64 @@ span.post-delete {
 }
 .authorpostbox .img-thumb {
   width: 100%;
+}
+
+/*Login Styling*/
+.login-page {
+  background: grey;
+  background: linear-gradient(
+    to right,
+    rgba(128, 128, 128, 0.5),
+    rgba(128, 128, 128, 1)
+  );
+}
+
+.form-popup,
+.write-popup {
+  border-radius: 10px;
+  padding: 35px 26px;
+}
+
+.btn-login {
+  border-color: #02b875;
+  color: #1c9963;
+  padding: 3px 10px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 15px;
+  height: 30px;
+}
+
+.sup {
+  font-size: 14px;
+}
+
+.input-box {
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.input-label {
+  margin-top: 15px;
+  margin-bottom: 0;
+  padding-left: 0;
+  display: block;
+}
+
+/*Write Styling*/
+.write-popup {
+  max-width: 600px;
+  border: none;
+}
+
+.write-popup input {
+  width: 100%;
+}
+
+.write-popup p {
+  font-weight: bold;
+}
+
+.select-category {
+  padding: 5px 5px;
 }
