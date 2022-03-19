@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,12 +52,11 @@
             <li class="nav-item">
               <a class="nav-link"  href="login.php">Login</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link"  href="profile.php"
                 >Profile</a
               >
-            </li>
-            
+            </li>-->
           </ul>
           
         </div>

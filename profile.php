@@ -107,7 +107,7 @@
 						<div class="card-block">
                              <span class="post-delete">
                           <a href="#" title="Delete">
-                          <img src="assets/img/trash.png" alt=""></a
+                          <img src="assets/img/trash.png" alt="Delete"></a
                       ></span> <!--Add link to delete the story -->
 							<h2 class="card-title"><a href="post.html"> Hello Aberdeen</a></h2>
                            
