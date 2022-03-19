@@ -1,7 +1,3 @@
-<?php 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,18 +23,26 @@
     <!--Login Container-->
     <div class="container">
         <div class= "row justify-content-center"> 
-<div class="card col-md-4 form-popup" id= "login">
+<div class="card col-md-4 form-popup">
+
     <div class="text-center">
-        <div class="px-1 close"> <a href="index.html">&times;</a></div>
+        <div class="px-1 close "> <a class= "text-success" href="index.html">&times;</a></div>
               </div>
+
             <div class="form mt-3">
+              <form action="testlogin.php" method="post" id= "login"> 
                 <label class= "input-label" for="username"> <b>Username:</b></label>
             <input class="input-box" type="text" placeholder= "Enter Email" name ="username" required> 
             <label class= "input-label"for="password"> <b>Password:</b></label>
-            <input class="input-box" type="text" placeholder="Enter Password" name= "password"required>
-<a href="index.php" class="btn btn-login  my-4">Login </a>
-                 </div>
+            <input class="input-box" type="password" placeholder="Enter Password" name= "password"required>
+<input type="submit" value= "Login" class= "btn btn-success">
+<!--  Submit using anchor tag not working <a href="#" class="btn btn-login  my-4">Login </a>-->
+<!--Login Error Code-->
+<div class="error"><?php//echo $error?> <?php//echo $username; $echo password?></div>
+                 
 <span class= "sup"> Don't have an account? <a href="signup.php">Sign Up </a></span>
+</form>
+</div>
     </div>  
     </div>
      </div>
