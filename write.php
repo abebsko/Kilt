@@ -32,8 +32,9 @@
         <div class="px-1 close"> <a class= "text-success"href="profile.php">&times;</a></div>
             </div>
             <div class="form mt-3">
+              <form action="" method="post"> 
                 <label class= "input-label" for="postTitle"> <b>Title:</b></label>
-            <input type="text" name ="titleBox" required> 
+            <input type="text" name ="title" required> 
              <label class= "input-label" for="postTitle"> <b>Category:</b></label>
             <select class= "select-category">
            <option value="None">Select Category</option>
@@ -41,6 +42,8 @@
             <option value="Res">Restaurants</option>
             <option value="Ent"> Entertainment</option>
           </select>
+          <label class= "input-label" for="postTitle"> <b>Location:</b></label>
+            <input type="text" name ="Location" required> 
           <p class= "input-label">
             Write Something: 
            <div>
@@ -52,6 +55,7 @@
            </p>
            <p> <input type="submit" value="POST" class="btn btn-success" />
         </p>
+        </form>
                    </div>
 
     </div>

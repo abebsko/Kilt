@@ -1,9 +1,11 @@
 <?php
-include ("dbconnection.php"); //Establishing connection to database
+
+include_once ("dbconnection.php"); //Establishing connection to database
 
 //set variables 
 $username = $_POST["username"];
 $password= $_POST["password"];
+
 
 if ( isset($username)||isset($password))
 { 
@@ -17,6 +19,7 @@ if (mysqli_num_rows($result)== 1)
     session_start();
     session_regenerate_id();
     $_SESSION['id'] = $row['UserId'];
+    //$_SESSION['name'] = $row ['firstname'];
     header("location:loginsuccess.php"); 
     session_write_close();
     exit(); 

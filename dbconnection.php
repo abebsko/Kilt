@@ -1,11 +1,11 @@
 <?php
 $servername= "localhost";
 $dbname = "kilt";
-$username = "root";
-$password= "";
+$dbusername = "root";
+$dbpassword= "";
 
 //create connection 
-$db = new mysqli($servername, $username, $password, $dbname);
+$db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 //check connection
 
 if ($db->connect_error) {

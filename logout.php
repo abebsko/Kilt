@@ -1,12 +1,16 @@
 <?php
-session_start();
-unset($_SESSION["id"]);
-header("location: index.php");
+session_start ();
 
-/*if(!isset($_SESSION['id']) || (trim($_SESSION['id']) == "")){
-    header("location: index.php");
-    exit();
+if(!$_SESSION["id"]) {
+    echo "Session not Set";
 }
-$s_id=$_SESSION['id'];*/
+
+else {
+session_destroy();
+header("location: index.php");
+}
+
+
+
 
 ?>

@@ -1,29 +1,4 @@
- 
-<?php
-include_once("signinconnection.php");
-
-
-if(isset($_POST["submit"])){
-	$username = $_POST["user_name"];
-	$email= $_POST["email"];
-	$password = $_POST["password"];
-	
-  $sql = "INSERT INTO customers (username, password, email) VALUES(?,?,?)";
-  $stmtinsert = $db->prepare($sql);
-  $query_result= $stmtinsert->execute([$username, $password, $email]);
-
-	if($query_result){
-    echo "registered successfully";
-    header("Location: signin.php");
-	}else{
-    echo "error with registration ";
-  }
-}
-
-?>
-
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,21 +25,23 @@ if(isset($_POST["submit"])){
         <div class= "row justify-content-center"> 
 <div class="card col-md-4 form-popup" id= "login">
     <div class="text-center">
-        <div class="px-1 close"> <a href="index.html">&times;</a></div>
+        <div class="px-1 close"> <a href="index.php">&times;</a></div>
               </div>
-            <div class="form mt-3" method= "post" action= "testlogin.php">
+            <div class="form mt-3">
+              <form action="signup.php" method= "post">      
                 <label class= "input-label" for="firstname"> <b>Firstname:</b></label>
             <input class="input-box" type="text" name ="firstname" required> 
-            <label class= "input-label" for="lastname"> <b>Lastname:</b></label>
-            <input class="input-box" type="text" name ="lastname" required> 
+            <label class= "input-label" for="surname"> <b>Lastname:</b></label>
+            <input class="input-box" type="text" name ="surname" required> 
             
                 <label class= "input-label" for="username"> <b>Username:</b></label>
             <input class="input-box" type="text" placeholder= "Enter Email" name ="username" required> 
             <label class= "input-label"for="password"> <b>Password:</b></label>
-            <input class="input-box" type="password" placeholder="Choose Password" name= "password"required>
-<a href="login.php"  class="btn btn-login  my-4">Create Account</a>
+            <input class="input-box" type="password" placeholder="Choose Password" name= "password" required>
+<input type="submit" value= "Create Account" name=submit class= "btn btn-success">
                  </div>
 <span class= "sup"> Already have an account? <a href="login.php">Login </a></span>
+     </form>
     </div>  
     </div>
      </div>
@@ -82,3 +59,31 @@ if(isset($_POST["submit"])){
   
 </body>
 </html>
+
+<?php
+include_once("dbconnection.php");
+
+ 
+if ( isset($_POST ["submit"]))
+{
+$firstname = $_POST ["firstname"];
+  $surname = $_POST ["surname"];
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+  //check if user is already registered.  
+  $checkemail = "SELECT userID FROM users WHERE username= '$username' and password ='$password'";
+  $checkemailresult = mysqli_query($db,$checkemail);
+  if(mysqli_num_rows($checkemailresult)> 0) {
+    echo "<script> alert('$username already exists') </script>";
+    exit();
+  }
+
+	//insert new user into database 
+  $insertuser = "INSERT INTO users (username, password, firstname, surname) VALUES('$username','$password','$firstname','$surname')";
+	if(mysqli_query($db,$insertuser)) {
+        header ("Location: login.php");}
+  else{
+    echo "<script> alert (Failed to Register New User) </script>";
+  }
+}
+?>

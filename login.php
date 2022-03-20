@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,17 +27,17 @@
 <div class="card col-md-4 form-popup">
 
     <div class="text-center">
-        <div class="px-1 close "> <a class= "text-success" href="index.html">&times;</a></div>
+        <div class="px-1 close "> <a class= "text-success" href="index.php">&times;</a></div>
               </div>
 
             <div class="form mt-3">
-              <form action="testlogin.php" method="post" id= "login"> 
+              <form action="login.php" method="post" id= "login"> 
                 <label class= "input-label" for="username"> <b>Username:</b></label>
             <input class="input-box" type="text" placeholder= "Enter Email" name ="username" required> 
             <label class= "input-label"for="password"> <b>Password:</b></label>
             <input class="input-box" type="password" placeholder="Enter Password" name= "password"required>
-<input type="submit" value= "Login" class= "btn btn-success">
-<!--  Submit using anchor tag not working <a href="#" class="btn btn-login  my-4">Login </a>-->
+<input type="submit" name="Login" value= "Login" class= "btn btn-success">
+
 <!--Login Error Code-->
 <div class="error"><?php//echo $error?> <?php//echo $username; $echo password?></div>
                  
@@ -60,3 +61,33 @@
   
 </body>
 </html>
+
+<?php
+
+include_once ("dbconnection.php"); //Establishing connection to database
+
+if ( isset($_POST["Login"]))
+{ 
+  //set variables 
+$username = $_POST["username"];
+$password= $_POST["password"];
+//run sql query 
+$sql= "SELECT UserID FROM users WHERE username='$username' and password='$password'";
+$result= mysqli_query($db,$sql);
+$row= mysqli_fetch_array ($result);
+//check result 
+if (mysqli_num_rows($result)== 1)
+{  //set session 
+    $_SESSION['id'] = $row['UserId']; //set session 
+    //$_SESSION['name'] = $row ['firstname'];
+    header("location:loginsuccess.php"); 
+    //session_write_close();
+    exit(); 
+}
+
+else {
+    echo "<script> alert(Incorrect username or password.) </script> "; 
+} 
+ 
+}
+?>
