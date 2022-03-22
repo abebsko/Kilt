@@ -32,7 +32,7 @@
         <div class="px-1 close"> <a class= "text-success"href="profile.php">&times;</a></div>
             </div>
             <div class="form mt-3">
-              <form action="" method="post"> 
+              <form action="write.php" method="post"> 
                 <label class= "input-label" for="postTitle"> <b>Title:</b></label>
             <input type="text" name ="title" required> 
              <label class= "input-label" for="postTitle"> <b>Category:</b></label>
@@ -51,7 +51,7 @@
           
            </div> </p>
            <p> <span class= "input-label"> Upload Image:</span>
- <input type="file" id="postImg" name="postImg">
+ <input type="file" id="postImg" name="postImg" enctype="multipart/form-data">
            </p>
            <p> <input type="submit" value="POST" class="btn btn-success" />
         </p>
@@ -73,5 +73,11 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
   
+
 </body>
 </html>
+
+<?php 
+$targetdir = "uploads/";
+$target_file = $targetdir. basename ($_FILES["postImg"])
+?>
