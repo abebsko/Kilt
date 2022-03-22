@@ -1,3 +1,29 @@
+<?php
+
+include_once ("dbconnection.php"); //Establishing connection to database
+session_start(); 
+
+if ( isset($_POST["Login"]))
+{ //set variables 
+$username = $_POST["username"];
+$password= $_POST["password"];
+//run sql query 
+$sql= "SELECT UserID FROM users WHERE username='$username' and password='$password'";
+$result= mysqli_query($db,$sql);
+$row= mysqli_fetch_array ($result, MYSQLI_ASSOC);
+//check result 
+if (mysqli_num_rows($result)== 1)
+{
+    $_SESSION['login_user'] = $row['username'];
+    //$_SESSION['name'] = $row ['firstname'];
+    header("location:loginsuccess.php"); 
+}
+else {
+    echo "Incorrect username or password."; 
+}  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,34 +87,3 @@
 </body>
 </html>
 
-<?php
-session_start();
-include_once ("dbconnection.php"); //Establishing connection to database
-if (!isset($_SESSION['id']))
-{
-    $loginStatus= "true";
-}
-
-if ( isset($_POST["Login"]))
-{ 
-  //set variables 
-$username = $_POST["username"];
-$password= $_POST["password"];
-//run sql query 
-$sql= "SELECT UserID FROM users WHERE username='$username' and password='$password'";
-$result= mysqli_query($db,$sql);
-
-//check result 
-if (mysqli_num_rows($result)== 1)
-{  //set session 
-      $_SESSION['id'] = $username;
-       header("location:loginsuccess.php");
-       exit(); 
-}
-
-else {
-    echo "<script> alert('Incorrect username or password.') </script> "; 
-} 
- 
-}
-?>

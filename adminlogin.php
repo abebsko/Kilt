@@ -1,6 +1,3 @@
-<?php session_start(); 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +55,7 @@
 </html>
 
 <?php
+session_start ();
 include_once ("dbconnection.php");
 
 if (isset($_POST['adminLogin']))
@@ -72,11 +70,14 @@ $adminresult= mysqli_query($db,$adminsql);
 
 //check result 
 if (mysqli_num_rows($adminresult) == 1)
-{
-       header("location:adminpage.php");  
+{ 
+   $_SESSION['id'] = $adminName;
+      header("location:viewusers.php");  
+       exit ();
 }
 else {
-    echo "<script> alert(Incorrect Administrator Name or password.) </script> "; 
+  //echo "Incorrect Administrator Name or Password";
+   echo "<script> alert('Incorrect Administrator Name or password.') </script> "; 
 } 
 } 
 
