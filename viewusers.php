@@ -58,7 +58,7 @@
               >
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="logout.php" title= "logout"
+                <a class="nav-link"  href="adminlogout.php" title= "logout"
                 ><img src="assets/img/power2.png" alt="logout"></a
               >
             </li>           

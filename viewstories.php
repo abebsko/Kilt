@@ -58,7 +58,7 @@
               >
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="logout.php" title= "logout"
+                <a class="nav-link"  href="adminlogout.php" title= "logout"
                 ><img src="assets/img/power2.png" alt="logout"></a
               >
             </li>           
@@ -77,11 +77,11 @@
 <table class= "table table-bordered table-hover table-striped" style="table-layout:fixed">
 <thead>
 <tr>
-<th>StoryID</th>
-<th>UserID</th>
+<th style= "width: 8.33%">StoryID</th>
+<th style= "width: 8.33%">UserID</th>
 <th>Title</th>
 <th>Category</th>
-<th>Story Text</th>
+<th style= "width: 20%">Story Text</th>
 <th>Location</th>
 <th>Date Posted</th>
 <th>PostImg</th>
@@ -99,7 +99,7 @@ while ($row=mysqli_fetch_array($viewpostsResult)){
   $category= $row['category'];
   $text=$row['storyText'];
   $location= $row['location']; 
-  $date = $row['DatePosted'];
+  $date = $row['date_posted'];
   $postImg = $row['postImg'];
 ?>
 <tr>
@@ -110,7 +110,7 @@ while ($row=mysqli_fetch_array($viewpostsResult)){
   <td><?php echo $text; ?></td>
   <td><?php echo $location; ?></td>
   <td><?php echo $date; ?></td>
-  <td><img src="<?php echo $postImg; ?>" alt="post image"></td>
+  <td ><img class= "img-fluid "src="<?php echo 'uploads/'. $postImg; ?>" alt="post image"></td>
   <td>
     <a href="delete.php?delP=<?php echo $storyID?>">
     <button class="btn btn-danger ">

@@ -1,3 +1,9 @@
+<?php
+session_start (); 
+ include_once ("dbconnection.php");
+ require_once ("functions.php");
+$posts= getPosts();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,10 +58,9 @@
                 >Stories</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link"  href="profile.php"
-                >Profile</a
-              >
+            <li class="nav-item"> 
+             
+              <a class="nav-link"  href="profile.php <?php //profile.php?id=($_SESSION['id'] ?>">Profile</a> 
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="logout.php" title= "logout"
@@ -118,77 +123,25 @@
   
 </div>
 </div>
-<!--<div class="row">
-<div class=" filter-selected">
-<div> Selected Filter <span class="px-1 close"> &times;</span></div>
-<div> Selected Filter <span class="px-1 close"> &times;</span></div>
-</div>
-</div> -->
-
-
-
 
 <!--Filter Ends-->
       <!-- Begin Stories ================================================= --> 
      <!-- Begin Author Posts
 ================================================== -->
+ <?php foreach ($posts as $post):?>                         
 <div class="graybg authorpage">
 	<div class="container">
 		<div class="listrecent listrelated">
 				<!-- begin post -->
 				<div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-                          
-							<h2 class="card-title"><a href="post.html"> Hello Aberdeen</a></h2>
-                           
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mckinght</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                      
-                      
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end post -->
+        <div class="card">
+          
+					<img class="img-fluid img-thumb" src="<?php echo 'uploads/'. $post['postImg']; ?>" alt="post image">
+					<div class="card-block">
 
-				<!-- begin post -->
-		   <div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-                            
-							<h2 class="card-title"><a href="post.html"> With Love from Edinburgh</a></h2>
+							<h2 class="card-title"><a href="post.php"> <?php echo $post ['title']?></a></h2>
                            
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
+              <h4 class="card-text"> <?php echo $post ['storyText'] ?></h4>
                  </h4>
             	<div class="metafooter">
                     <div class="wrapfooter">
@@ -201,113 +154,30 @@
                       </span>
                       <span class="author-meta">
                         <span class="post-name"
-                          >Steve Mckinght</span
+                          ><?php echo $post ['firstname']." ". $post ['surname']?></span
                         ><br />
-                        <span class="post-date">5th March 2022</span
+                        <span class="post-date"><?php echo date("F j, Y", strtotime($post ['date_posted'])); ?></span
                         >
                       </span>
                       <span class="post-read-more"
-                        ><a href="#" title="Read Story"
+                        ><a href="post.php?story=$post['storyID']" title="Read Story"
                           >
                           <!--Add link to read the story in full on another page-->
                           Read More</a
                       ></span> 
-                      
-                      
+                    
+                   
 								</div>
 							</div>
 						</div>
+           
 					</div>
 				</div>
-				<!-- end post -->
-<!--Begin Post -->
-<div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-                            
-							<h2 class="card-title"><a href="post.html"> Restaurants to Visit in Perth</a></h2>
-                           
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mcknight</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                      
-                      
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-<!--End Post-->
-
-<!--Begin Post-->
-<div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-							<h2 class="card-title"><a href="post.html"> Things to do in Dundee</a></h2>
-                           
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mcknight</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                      
-                      
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-<!--End Post -->
+			<!-- end post -->	
 		</div>
 	</div>
 </div>
-     
+ <?php endforeach ?>      
       
 <!-- End Stories================================================== -->    
 

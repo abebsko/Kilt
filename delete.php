@@ -17,16 +17,16 @@ if ($deleteQueryResult){
     exit();
 }
 
-else { 
-if(isset($_GET['delP'])) {
+elseif(isset($_GET['delP'])) { 
 $deleteStory = $_GET ['delP'];
 $deleteStoryQuery  = "DELETE from stories WHERE storyID='$deleteStory'";
 $deleteStoryResult= mysqli_query($db,$deleteStoryQuery);
 if ($deleteStoryResult){
-    echo "<script> window.open('viewstories.php?deleted=post has been deleted','_self') </script>"; 
-    
+    echo "<script> window.open('viewstories.php?deleted=post has been deleted','_self') </script>";    
 }
 }
+//elseif(){} use to code the delete button from profile page
+
 exit ();
-}
+
 ?>

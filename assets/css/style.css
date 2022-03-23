@@ -305,6 +305,7 @@ blockquote {
   font-weight: 400;
 }
 
+/*Check if this is needed*/
 .listrelated .card {
   box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
   border: 0;
@@ -313,10 +314,7 @@ blockquote {
   padding: 40px 0 46px;
   position: relative;
 }
-.listrelated .card {
-  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
-  border: 0;
-}
+
 .card {
   border-radius: 4px;
 }
