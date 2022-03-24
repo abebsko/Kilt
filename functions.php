@@ -10,22 +10,23 @@ $posts = mysqli_fetch_all($postresult, MYSQLI_ASSOC);
 return $posts;     
 }
 
-
-function getUser(){
+/* Can this be broken into two functions? */
+function getUserposts(){
 global $db;
 if (isset($_SESSION['id'])) {
 $username= $_SESSION['id']; 
 $viewuser = "SELECT * FROM users WHERE username= '$username' ";
-$userResult= mysqli_query($db,$viewuser); 
-$user= mysqli_fetch_array($userResult); 
-
-return $user; 
+$userResult= mysqli_query($db,$viewuser); }
+ 
+while ($user= mysqli_fetch_array($userResult)) {
+$userid= $user['UserID'];
+$userQuery= " SELECT * FROM posts WHERE Userid= '$userid'";
+$userQueryResult= mysqli_query($db,$userQuery);
+$userposts= mysqli_fetch_all($userQueryResult,MYSQLI_ASSOC);
+return $userposts; 
 }
-}
 
-function getUserpost($user){
-
-    $userQuery= "SELECT * FROM posts WHERE userid";
-    $userposts= mysqli_fetch_array($userResult);
 }
+    
+
 ?>
