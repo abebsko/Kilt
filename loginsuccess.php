@@ -60,7 +60,7 @@ $posts= getPosts();
             </li>
             <li class="nav-item"> 
              
-              <a class="nav-link"  href="profile.php <?php //profile.php?id=($_SESSION['id'] ?>">Profile</a> 
+              <a class="nav-link"  href="profile.php">Profile</a> 
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="logout.php" title= "logout"
@@ -139,7 +139,7 @@ $posts= getPosts();
 					<img class="img-fluid img-thumb" src="<?php echo 'uploads/'. $post['postImg']; ?>" alt="post image">
 					<div class="card-block">
 
-							<h2 class="card-title"><a href="post.php"> <?php echo $post ['title']?></a></h2>
+							<h2 class="card-title"><a href="post.php?story=<?php echo $post['storyID']?>"> <?php echo $post ['title']?></a></h2>
                            
               <h4 class="card-text"> <?php echo $post ['storyText'] ?></h4>
                  </h4>
@@ -148,8 +148,7 @@ $posts= getPosts();
                       <span class="meta-footer-thumb">
                        <img
                             class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
+                            src="<?php echo 'uploads/'. $post['userpic']; ?>" alt="profile image"
                         />
                       </span>
                       <span class="author-meta">
@@ -160,9 +159,9 @@ $posts= getPosts();
                         >
                       </span>
                       <span class="post-read-more"
-                        ><a href="post.php?story=$post['storyID']" title="Read Story"
+                        ><a href="post.php?story=<?php echo $post['storyID']?>" title="Read Story"
                           >
-                          <!--Add link to read the story in full on another page-->
+                          <!-- This is how to put a get on a link-->
                           Read More</a
                       ></span> 
                     

@@ -135,8 +135,7 @@ $posts= getPosts();
                       <span class="meta-footer-thumb">
                        <img
                             class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
+                            src="<?php echo 'uploads/'. $post['userpic']; ?>" alt="profile image"
                         />
                       </span>
                       <span class="author-meta">

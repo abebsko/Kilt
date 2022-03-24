@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +32,17 @@
         <div class="px-1 close"> <a class= "text-success"href="profile.php">&times;</a></div>
             </div>
             <div class="form mt-3">
-              <form action="write.php" method="post"> 
+              <form action="write.php" method="post" enctype="multipart/form-data"> 
                 <label class= "input-label" for="title"> <b>Title:</b></label>
             <input type="text" name ="title" required> 
-             <label class= "input-label" for="category"> <b>Category:</b></label>
-            <select class= "select-category" name="category">
+            <!-- <select class= "select-category" name="category">
            <option value="None">Select Category</option>
             <option value="Mus"> Museums & Castles</option>
             <option value="Res">Restaurants</option>
             <option value="Ent"> Entertainment</option>
-          </select>
+          </select>-->
+          <label class= "input-label" for="category"> <b>Category:</b></label>
+            <input type="text" name ="category" required> 
           <label class= "input-label" for="location"> <b>Location:</b></label>
             <input type="text" name ="location" required> 
           <p class= "input-label">
@@ -51,7 +52,7 @@
           
            </div> </p>
            <p> <span class= "input-label"> Upload Image:</span>
- <input type="file" id="postImg" name="postImg" enctype="multipart/form-data">
+ <input type="file" name="uploadfile" >
            </p>
            <p> <input type="submit" name= "post" value="POST" class="btn btn-success" />
         </p>
@@ -77,40 +78,43 @@
 </body>
 </html>
 
+
 <?php
 include_once("dbconnection.php");
- 
-if ( isset($_POST ["post"]))
-{//code wouldnt work yet cause there's nothing to identify particular user id. 
-  //set all variables 
+//get user id so that each posts matches to user in database
+$username= $_SESSION['id']; 
+$viewuser = "SELECT * FROM users WHERE username= '$username' ";
+$userResult= mysqli_query($db,$viewuser); 
+$user= mysqli_fetch_array($userResult);
+$userid= $user['UserID']; 
+
+//run database update
+if (isset($_POST ['post']))
+{ //set all variables 
   $title = $_POST['title']; 
   $category= $_POST ['category']; 
   $text= $_POST ['story-text'];
   $location= $_POST['location']; 
-  $date= date("Y-m-d");
   //file upload
-  $filename= $_FILES["postImg"] ["name"];
-  $tempname= $_FILES["postImg"] ["tmp_name"];
+  $filename= $_FILES["uploadfile"] ["name"];
+  $tempname= $_FILES["uploadfile"] ["tmp_name"];
   $folder= "uploads/".$filename;
 
-  $post = "INSERT INTO stories (title,category,storyText,location,DatePosted,postImg)
-   VALUES ('$title','$category','$text','$location','$date','$filename',)";
-  
-  if (mysqli_query($db,$post)){
-//move the uploaded file into the folder
-if(move_uploaded_file($tempname,$folder)) {
-echo "<script> alert (upload successful) </script>";
-header ("Location: profile.php"); 
+  //run sql query
+  $upload = "INSERT INTO stories (title,category,storyText,location,postImg,UserID)
+   VALUES ('$title','$category','$text','$location','$filename','$userid')";
+   mysqli_query($db,$upload); 
+
+//move the uploaded file into the folder and then insert into database.  
+  if (move_uploaded_file($tempname,$folder)== TRUE){
+     header ("Location: profile.php");  }
+    else{
+       echo "<script> alert (Failed to upload) </script>";
+    }
 } 
 else {
     echo "<script> alert (Failed to upload) </script>";
-}      
-  
+    
 }
 
-}
-else{
-    echo "<script> alert (Failed to Create New Post) </script>";
-    header ("location:write.php?id="); //figure this part out. Since we're using session do we use the session id? 
-  }
 ?>

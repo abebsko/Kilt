@@ -25,6 +25,15 @@ if ($deleteStoryResult){
     echo "<script> window.open('viewstories.php?deleted=post has been deleted','_self') </script>";    
 }
 }
+elseif(isset($_GET['delU'])) { 
+$deleteUStory = $_GET ['delU'];
+$deleteUStoryQuery  = "DELETE from stories WHERE storyID='$deleteUStory'";
+$deleteUStoryResult= mysqli_query($db,$deleteUStoryQuery);
+if ($deleteUStoryResult){
+    echo "<script> window.open('profile.php?deleted=post has been deleted','_self') </script>";    
+}
+}
+
 //elseif(){} use to code the delete button from profile page
 
 exit ();

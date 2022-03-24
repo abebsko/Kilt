@@ -1,4 +1,7 @@
-<?php session_start()
+<?php session_start();
+include_once ("dbconnection.php");
+require_once ("functions.php");
+$Uposts= getUserPosts();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,11 +88,12 @@ while ($user= mysqli_fetch_array($userResult)) {
 $firstname=$user['firstname'];
 $surname = $user ['surname']; 
 
+
 ?> 
 			<div class="mainheading">
 				<div class="row post-top-meta authorpage">
                     <div class="col-md-2 col-xs-12">
-						<img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal">
+						<img class="author-thumb" src="<?php echo 'uploads/'. $user['userpic']; ?>" alt="profile image">
 					</div>
 					<div class="col-md-10 col-xs-12">
             <?php echo "<h1> {$firstname} {$surname}</h1>";?>
@@ -108,6 +112,9 @@ $surname = $user ['surname'];
 
 <!-- Begin Author Posts
 ================================================== -->
+<?php 
+
+foreach ($Uposts as $Upost):?>
 <div class="graybg authorpage">
 	<div class="container">
 		<div class="listrecent listrelated">
@@ -115,187 +122,46 @@ $surname = $user ['surname'];
 				<div class="authorpostbox">
 					<div class="card">
 						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
+						<img class="img-fluid img-thumb" src="<?php echo 'uploads/'. $Upost['postImg']; ?>" alt="">
 						</a>
 						<div class="card-block">
                              <span class="post-delete">
-                          <a href="#" title="Delete">
+                          <a href="delete.php?delU=<?php echo $Upost['storyID']?>" title="Delete">
                           <img src="assets/img/trash.png" alt="Delete"></a
                       ></span> <!--Add link to delete the story -->
-							<h2 class="card-title"><a href="post.html"> Hello Aberdeen</a></h2>
+							<h2 class="card-title"><a href="post.php?story=<?php echo $Upost['storyID']?>"><?php echo $Upost ['title']?></a></h2>
                            
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
+              <h4 class="card-text"> <?php echo $Upost ['storyText']?></h4>
+                          	<div class="metafooter">
                     <div class="wrapfooter">
                       <span class="meta-footer-thumb">
                        <img
                             class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
+                            src="<?php echo 'uploads/'. $Upost['userpic']; ?>" alt="profile image"
                         />
                       </span>
                       <span class="author-meta">
                         <span class="post-name"
-                          >Steve Mckinght</span
+                          ><?php echo $Upost ['firstname']." ". $Upost ['surname']?></span
                         ><br />
-                        <span class="post-date">5th March 2022</span
+                        <span class="post-date"><?php echo date("F j, Y", strtotime($Upost ['date_posted'])); ?></span
                         >
                       </span>
                       <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
+                        ><a href="post.php?story=<?php echo $Upost['storyID']?>" title="Read Story"
+                          >Read More</a
                       ></span> 
                       
-                      
-								</div>
+              </div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- end post -->
-
-				<!-- begin post -->
-		   <div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-                             <span class="post-delete">
-                          <a href="#" title="Delete">
-                          <img src="assets/img/trash.png" alt=""></a
-                      ></span> <!--Add link to delete the story -->
-							<h2 class="card-title"><a href="post.html"> With Love from Edinburgh</a></h2>
-                           
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mckinght</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                      
-                      
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end post -->
-<!--Begin Post -->
-<div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-                             <span class="post-delete">
-                          <a href="#" title="Delete">
-                          <img src="assets/img/trash.png" alt=""></a
-                      ></span> <!--Add link to delete the story -->
-							<h2 class="card-title"><a href="post.html"> Restaurants to Visit in Perth</a></h2>
-                           
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mcknight</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                      
-                      
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-<!--End Post-->
-
-<!--Begin Post-->
-<div class="authorpostbox">
-					<div class="card">
-						<a href="author.html">
-						<img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt="">
-						</a>
-						<div class="card-block">
-                             <span class="post-delete">
-                          <a href="#" title="Delete">
-                          <img src="assets/img/trash.png" alt=""></a
-                      ></span> <!--Add link to delete the story -->
-							<h2 class="card-title"><a href="post.html"> Things to do in Dundee</a></h2>
-                           
-              <h4 class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida tellus ut magna tempor suscipit. Nullam leo risus, sodales a eros id, ultricies blandit arcu. Duis sit amet vehicula sapien. Praesent et volutpat nunc.</h4>
-                 </h4>
-            	<div class="metafooter">
-                    <div class="wrapfooter">
-                      <span class="meta-footer-thumb">
-                       <img
-                            class="author-thumb"
-                            src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x"
-                            alt="Sal"
-                        />
-                      </span>
-                      <span class="author-meta">
-                        <span class="post-name"
-                          >Steve Mcknight</span
-                        ><br />
-                        <span class="post-date">5th March 2022</span
-                        >
-                      </span>
-                      <span class="post-read-more"
-                        ><a href="#" title="Read Story"
-                          >
-                          <!--Add link to read the story in full on another page-->
-                          Read More</a
-                      ></span> 
-                      
-                      
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-<!--End Post -->
 		</div>
 	</div>
 </div>
+<?php endforeach ?>
 <!-- End Author Posts
 ================================================== -->
 
