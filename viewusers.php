@@ -82,6 +82,7 @@
 <th>Password</th>
 <th>Firstname</th>
 <th>Surname</th>
+<th>Profile Picture</th>
 <th>Delete User</th>
 </tr>
 </thead>
@@ -95,6 +96,7 @@ while ($row=mysqli_fetch_array($viewusersResult)){
   $password=$row[2];
   $firstname = $row[3];
   $surname= $row[4]; 
+  $userpic= $row[5];
 
 ?>
 <tr>
@@ -103,6 +105,7 @@ while ($row=mysqli_fetch_array($viewusersResult)){
   <td><?php echo $password; ?></td>
   <td><?php echo $firstname; ?></td>
   <td><?php echo $surname; ?></td>
+  <td ><img class= "img-fluid "src="<?php echo 'uploads/'. $userpic; ?>" alt="profile image"></td>
   <td>
     <a href="delete.php?del=<?php echo $userID?>">
     <button class="btn btn-danger ">
