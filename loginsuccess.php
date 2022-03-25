@@ -54,7 +54,7 @@ $posts= getPosts();
         <div class="collapse navbar-collapse" id="navbartoggler">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link"  href="index.php"
+              <a class="nav-link"  href="loginsuccess.php"
                 >Stories</a
               >
             </li>
@@ -159,7 +159,7 @@ $posts= getPosts();
                         >
                       </span>
                       <span class="post-read-more"
-                        ><a href="post.php?story=<?php echo $post['storyID']?>" title="Read Story"
+                        ><a href="loggedinpost.php?story=<?php echo $post['storyID']?>" title="Read Story"
                           >
                           <!-- This is how to put a get on a link-->
                           Read More</a

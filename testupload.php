@@ -32,6 +32,125 @@ while ($data= mysqli_fetch_array($result)){
 }
 ?>
 
+//most recent version
+<?php
+include_once("dbconnection.php");
+//get user id so that each posts matches to user in database
+$username= $_SESSION['id']; 
+$viewuser = "SELECT * FROM users WHERE username= '$username' ";
+$userResult= mysqli_query($db,$viewuser); 
+$user= mysqli_fetch_array($userResult);
+$userid= $user['UserID']; 
+
+//run database update
+if (isset($_POST ['post']))
+{ //set all variables 
+  $title = $_POST['title']; 
+  $category= $_POST ['category']; 
+  $text= $_POST ['story-text'];
+  $location= $_POST['location']; 
+  //file upload
+  $filename= $_FILES['uploadfile'] ['name'];
+  $tempname= $_FILES['uploadfile'] ['tmp_name'];
+  $folder= "uploads/".$filename;
+
+  //run sql query
+  $upload = "INSERT INTO stories (title,category,storyText,location,postImg,UserID)
+   VALUES ('$title','$category','$text','$location','$filename','$userid')";
+   mysqli_query($db,$upload); 
+
+//move the uploaded file into the folder and then insert into database.  
+  if (move_uploaded_file($tempname,$folder)){
+     header ("Location: profile.php");  }
+    else{
+       echo "<script> alert (Failed to upload) </script>";
+    }
+} 
+else {
+    echo "<script> alert (Failed to upload) </script>";
+    
+}
+
+?>
+
+
+<?php
+include_once("dbconnection.php");
+//get user id so that each posts matches to user in database
+if (isset($_SESSION['id'])) {
+$username= $_SESSION['id']; 
+$viewuser = "SELECT * FROM users WHERE username= '$username' ";
+$userResult= mysqli_query($db,$viewuser); 
+$user= mysqli_fetch_array($userResult);
+$userid= $user['UserID']; 
+
+if ( isset($_POST ["post"]))
+{ //set all variables 
+  $title = $_POST['title']; 
+  $category= $_POST ['category']; 
+  $text= $_POST ['story-text'];
+  $location= $_POST['location']; 
+  //file upload
+  $filename= $_FILES['image'] ["name"];
+  $tempname= $_FILES['image'] ["tmp_name"];
+  $folder= "uploads/".$filename;
+}
+//move the uploaded file into the folder and then insert into database.  
+if(move_uploaded_file($tempname,$folder)) {
+   $write = "INSERT INTO stories (title,category,storyText,location,postImg,UserID)
+   VALUES ('$title','$category','$text','$location','$filename','$userid')";
+   mysqli_query($db,$write); 
+echo "<script> alert (upload successful) </script>";
+header ("Location: profile.php"); 
+} 
+else {
+    echo "<script> alert (Failed to upload) </script>";
+    header ("location:profile.php");
+}
+
+}
+?>
+<?php
+include_once("dbconnection.php");
+//check who user is 
+if (isset($_SESSION['id'])) {
+$username= $_SESSION['id']; 
+$viewuser = "SELECT * FROM users WHERE username= '$username' ";
+$userResult= mysqli_query($db,$viewuser); 
+}
+//get user id so that each posts matches to user in database
+while ($user= mysqli_fetch_array($userResult)) {
+$userid= $user['UserID'];
+
+if ( isset($_POST ["post"]))
+{ //set all variables 
+  $title = $_POST['title']; 
+  $category= $_POST ['category']; 
+  $text= $_POST ['story-text'];
+  $location= $_POST['location']; 
+  //file upload
+  $filename= $_FILES['image'] ["name"];
+  $tempname= $_FILES['image'] ["tmp_name"];
+  $folder= "uploads/".$filename;
+
+//move the uploaded file into the folder and then insert into database.  
+if(move_uploaded_file($tempname,$folder)) {
+   $write = "INSERT INTO stories (title,category,storyText,location,postImg,UserID)
+   VALUES ('$title','$category','$text','$location','$filename','$userid')";
+   mysqli_query($db,$write);
+ echo "<script> alert (upload successful) </script>";
+ header ("Location: profile.php"); 
+}
+else {
+    echo "<script> alert (Failed to upload) </script>";
+    header ("location:profile.php");
+}
+
+}
+}
+  
+?>
+ 
 <!DOCTYPE html>
 <html lang="en">
   <head>

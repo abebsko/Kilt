@@ -72,7 +72,7 @@ $adminresult= mysqli_query($db,$adminsql);
 if (mysqli_num_rows($adminresult) == 1)
 { 
    $_SESSION['id'] = $adminName;
-      header("location:viewusers.php");  
+      header("location:usersdashboard.php");  
        exit ();
 }
 else {

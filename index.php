@@ -146,7 +146,7 @@ $posts= getPosts();
                         >
                       </span>
                       <span class="post-read-more"
-                        ><a href="post.php?story=$post['storyID']" title="Read Story"
+                        ><a href="generalpost.php?story= <?php echo $post['storyID']?>" title="Read Story"
                           >
                           <!--Add link to read the story in full on another page-->
                           Read More</a

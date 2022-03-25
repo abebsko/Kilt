@@ -1,3 +1,7 @@
+<?php
+ include_once ("dbconnection.php"); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,21 +44,18 @@
       </button>
       <div class="container">
         <!-- Brand -->
-        <a class="navbar-brand" href="index.html"> KILT </a>
+        <a class="navbar-brand" href="loginsuccess.php"> KILT </a>
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbartoggler">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link"  href="index.html"
+              <a class="nav-link"  href="index.php"
                 >Stories</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="#">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  href="#"
-                >Profile</a
+              <a class="nav-link"  href="login.php"
+                >Login</a
               >
             </li>
             
@@ -74,60 +75,57 @@
 		<div class="col-md-8 col-md-offset-2 ">
 			<div class="mainheading">
 				<!-- Begin Author Details -->
+        <?php 
+ if (isset($_GET['story'])) {     
+$storyid = $_GET['story']; 
+$getstory = "SELECT * FROM posts WHERE storyID= '$storyid'";  
+$getstoryResult = mysqli_query($db,$getstory);
+
+while ($story=(mysqli_fetch_array($getstoryResult))){
+ 
+?>
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-						<img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal">
+						<img class="author-thumb" src="<?php echo 'uploads/'. $story['userpic']; ?>" alt="Profile Image">
 					</div>
 					<div class="col-md-10">
 						<span class="author-meta">
                         <span class="post-name"
-                          >Steve Mcknight</span
+                          > <h1> <?php echo $story ['firstname']." ". $story ['surname']?></h1></span
                         ><br />
-                        <span class="post-date">3rd March 2022</span
+                        <span class="post-date"><?php echo date("F j, Y", strtotime($story ['date_posted'])); ?></span
                         >
                       </span>
 						</div>
 				</div>
 				<!-- End Author Details-->
 
-				<h3 class="post-title"> Hello Aberdeen</h3>
+				<h3 class="post-title"> <?php echo $story ['title'] ?></h3>
 
 			</div>
 
 			<!-- Begin Featured Image -->
-			<img class="featured-image img-fluid" src="assets/img/demopic/10.jpg" alt="">
+			<img class="featured-image img-fluid" src="<?php echo 'uploads/'. $story['postImg']; ?>" alt="post image">
 			<!-- End Featured Image -->
 
 			<!-- Begin Post Content -->
 			<div class="article-post">
 				<p>
-					Holy grail funding non-disclosure agreement advisor ramen bootstrapping ecosystem. Beta crowdfunding iteration assets business plan paradigm shift stealth mass market seed money rockstar niche market marketing buzz market.
-				</p>
+				<?php echo $story ['storyText'] ?></p>
 				<p>
-					Burn rate release facebook termsheet equity technology. Interaction design rockstar network effects handshake creative startup direct mailing. Technology influencer direct mailing deployment return on investment seed round.
-				</p>
-				<p>
-					 Termsheet business model canvas user experience churn rate low hanging fruit backing iteration buyer seed money. Virality release launch party channels validation learning curve paradigm shift hypotheses conversion. Stealth leverage freemium venture startup business-to-business accelerator market.
-				</p>
-				<blockquote>
-					Gen-z strategy long tail churn rate seed money channels user experience incubator startup partner network low hanging fruit direct mailing. Client backing success startup assets responsive web design burn rate A/B testing metrics first mover advantage conversion.
-				</blockquote>
-				<p>
-					Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
-				</p>
+				
 			</div>
 			<!-- End Post Content -->
 
 			<!-- Begin Tags -->
 			<div class="after-post-tags">
 				<ul class="tags">
-					<li><a href="#">Aberdeen</a></li>
-					<li><a href="#">Restaurants</a></li>
-	
-				</ul>
+					<li><a href="#"><?php echo $story['category']; ?></a></li>
+					<li><a href="#"><?php echo $story['location']; ?></a></li>
+	    		</ul>
 			</div>
 			<!-- End Tags -->
-
+<?php } }  ?>
 		</div>
 		<!-- End Post -->
 

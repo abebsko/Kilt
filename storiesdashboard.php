@@ -48,12 +48,12 @@
         <div class="collapse navbar-collapse" id="navbartoggler">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link"  href="viewusers.php"
+              <a class="nav-link"  href="usersdashboard.php"
                 >Users</a
               >
             </li>
             <li class="nav-item active">
-              <a class="nav-link"  href="viewstories.php"
+              <a class="nav-link"  href="storiesdashboard.php"
                 >Posts</a
               >
             </li>

@@ -28,5 +28,20 @@ return $userposts;
 
 }
     
+function getCategory(){
+    global $db; 
+    $categoryQuery= "SELECT category FROM posts";
+    $categoryresult= msqli_query($db,$categoryQuery);
+    $categories= mysqli_fetch_array($categoryresult);
+    return $categories;
+}
+
+function getLocation(){
+    global $db; 
+    $locationQuery= "SELECT location FROM posts";
+    $locationresult= msqli_query($db,$locationQuery);
+    $locations= mysqli_fetch_array($locationresult);
+    return $locations;
+}
 
 ?>
