@@ -1,0 +1,36 @@
+
+CREATE TABLE USERS(
+UserID int (11) NOT NULL AUTO_INCREMENT,
+username varchar(50) NOT NULL,
+password varchar(12) NOT NULL,
+firstname varchar(50) NOT NULL, 
+surname varchar (50) NOT NULL,
+userpic varchar (50) DEFAULT "defaultuser.png",
+description varchar (50) NULL,
+PRIMARY KEY (UserID)
+);
+
+CREATE TABLE ADMIN (
+adminID int(11) NOT NULL AUTO_INCREMENT,
+adminName varchar(50) NOT NULL,
+adminPass varchar(50) NOT NULL, 
+PRIMARY KEY (adminID)
+);
+
+CREATE TABLE STORIES (
+storyID int NOT NULL AUTO_INCREMENT,
+UserID int DEFAULT NULL,
+title varchar (100) NOT NULL, 
+category varchar (50) NOT NULL, 
+location varchar (50) NOT NULL,
+storyText longtext NOT NULL, 
+postImg varchar(50) NOT NULL,
+date_posted timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (storyID), 
+FOREIGN KEY (UserID) REFERENCES Users(UserID)
+); 
+
+CREATE VIEW posts AS
+SELECT u.UserID, u.username, u.firstname, u.surname,u.userpic, p.storyID, p.title, p.category, p.location, p.storyText, p.postImg, p.date_posted
+FROM users u inner join stories s
+WHERE u.UserID = s.userID; 
