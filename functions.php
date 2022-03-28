@@ -4,7 +4,7 @@
 function getPosts (){
 //global imports variable into function
 global $db;
-$viewpost = "SELECT * FROM posts";
+$viewpost = "SELECT * FROM posts ORDER BY date_posted DESC";
 $postresult= mysqli_query($db,$viewpost); 
 $posts = mysqli_fetch_all($postresult, MYSQLI_ASSOC); 
 return $posts;     
@@ -20,14 +20,14 @@ $userResult= mysqli_query($db,$viewuser); }
  
 while ($user= mysqli_fetch_array($userResult)) {
 $userid= $user['UserID'];
-$userQuery= " SELECT * FROM posts WHERE Userid= '$userid'";
+$userQuery= " SELECT * FROM posts WHERE Userid= '$userid'ORDER BY date_posted DESC";
 $userQueryResult= mysqli_query($db,$userQuery);
 $userposts= mysqli_fetch_all($userQueryResult,MYSQLI_ASSOC);
 return $userposts; 
 }
 
 }
-    
+   //will this work to filter by category or functions?
 function getCategory(){
     global $db; 
     $categoryQuery= "SELECT category FROM posts";
