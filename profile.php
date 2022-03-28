@@ -46,7 +46,7 @@ $Uposts= getUserPosts();
       </button>
       <div class="container">
         <!-- Brand -->
-        <a class="navbar-brand" href="index.html"> KILT </a>
+        <a class="navbar-brand" href="index.php"> KILT </a>
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbartoggler">
           <ul class="navbar-nav ml-auto">
@@ -59,9 +59,11 @@ $Uposts= getUserPosts();
                 >Write</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link"  href="logout.php">Log out</a>
-            </li>
+             <li class="nav-item">
+                <a class="nav-link"  href="logout.php" title= "logout"
+                ><img src="assets/img/power2.png" alt="logout"></a
+              >
+            </li> 
             
           </ul>
           
@@ -97,8 +99,8 @@ $surname = $user ['surname'];
 					</div>
 					<div class="col-md-10 col-xs-12">
             <?php echo "<h1> {$firstname} {$surname}</h1>";?>
-									<span class="author-description"> Founder of Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum volutpat congue condimentum. Pellentesque ut consectetur.</span>
-								<a target="_blank" href="#" class="btn edit"> Edit Profile</a>
+									<span class="author-description">  <?php echo $user ['description'];?></span>
+								<a target="_blank" href="updateprofile.php" class="btn edit"> Edit Profile</a>
 			
 				</div>
 			</div>
