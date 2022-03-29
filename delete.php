@@ -9,7 +9,7 @@ $deleteQueryResult= mysqli_query($db,$deleteQuery);
 
 
 if ($deleteQueryResult){
-    echo "<script> window.open('viewusers.php?deleted=user has been deleted','_self') </script>"; 
+    echo "<script> window.open('usersdashboard.php?deleted=user has been deleted','_self') </script>"; 
     
 } else {
     echo "<script> alert('Unsuccessful')</script>"; 
@@ -22,7 +22,7 @@ $deleteStory = $_GET ['delP'];
 $deleteStoryQuery  = "DELETE from stories WHERE storyID='$deleteStory'";
 $deleteStoryResult= mysqli_query($db,$deleteStoryQuery);
 if ($deleteStoryResult){
-    echo "<script> window.open('viewstories.php?deleted=post has been deleted','_self') </script>";    
+    echo "<script> window.open('storiesdashboard.php?deleted=post has been deleted','_self') </script>";    
 }
 }
 elseif(isset($_GET['delU'])) { 

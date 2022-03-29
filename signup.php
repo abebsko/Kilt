@@ -29,14 +29,14 @@
               </div>
             <div class="form mt-3">
               <form action="signup.php" method= "post">      
-                <label class= "input-label" for="firstname"> <b>Firstname:</b></label>
+                <label class= "input-label" for="firstname"> <b>*Firstname:</b></label>
             <input class="input-box" type="text" name ="firstname" required> 
-            <label class= "input-label" for="surname"> <b>Lastname:</b></label>
+            <label class= "input-label" for="surname"> <b>*Lastname:</b></label>
             <input class="input-box" type="text" name ="surname" required> 
             
-                <label class= "input-label" for="username"> <b>Username:</b></label>
+                <label class= "input-label" for="username"> <b>*Username:</b></label>
             <input class="input-box" type="text" placeholder= "Enter Email" name ="username" required> 
-            <label class= "input-label"for="password"> <b>Password:</b></label>
+            <label class= "input-label"for="password"> <b>*Password:</b></label>
             <input class="input-box" type="password" placeholder="Choose Password" name= "password" required>
 <input type="submit" value= "Create Account" name=submit class= "btn btn-success">
                  </div>

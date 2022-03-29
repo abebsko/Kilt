@@ -28,7 +28,7 @@ return $userposts;
 
 }
    //will this work to filter by category or functions?
-function getCategory(){
+/*function getCategory(){
     global $db; 
     $categoryQuery= "SELECT category FROM posts";
     $categoryresult= msqli_query($db,$categoryQuery);
@@ -42,6 +42,6 @@ function getLocation(){
     $locationresult= msqli_query($db,$locationQuery);
     $locations= mysqli_fetch_array($locationresult);
     return $locations;
-}
+}*/
 
 ?>

@@ -38,7 +38,7 @@
 <input type="submit" name="Login" value= "Login" class= "btn btn-success">
 
 <!--Login Error Code-->
-<div class="error"><?php//echo $error?> <?php//echo $username; $echo password?></div>
+<div class="error"><?php//echo $error?></div>
                  
 <span class= "sup"> Don't have an account? <a href="signup.php">Sign Up </a></span>
 </form>
@@ -64,10 +64,10 @@
 <?php
 session_start();
 include_once ("dbconnection.php"); //Establishing connection to database
-if (!isset($_SESSION['id']))
+/*if (!isset($_SESSION['id']))
 {
     $loginStatus= "true";
-}
+}*/
 
 if ( isset($_POST["Login"]))
 { 
